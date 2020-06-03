@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Papper Scissors Game</title>
+        <meta charset="UTF-8" />
+    </head>
+<body>
+    <script>
+        function computerPlay() {
+            const playerChoice = ["Rock", "Paper", "Scissors"];
+            return playerChoice[Math.floor(Math.random()*playerChoice.length)];
+        }
+        function playerPlay() {
+            const playerChoice = prompt("Rock, Paper, Scissors");
+            return playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase();
+        }
+        
+        let playerRoundScore = 0;
+        let computerRoundScore = 0;
+        const computerSelection = "";
+        const playerSelection = "";
+
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerPlay();
+            computerSelection = computerPlay();
+            playerRoundScore = 0;
+            computerRoundScore = 0;
+            if (playerSelection === "Rock") {
+                if (computerSelection === "Scissors") {
+                    playerRoundScore = playerRoundScore + 1;
+                    return "Player Selection: Rock, Computer Selection: Scissors. Rock Breaks Scissors"; 
+                } else if (computerSelection === "Paper") {
+                    computerRoundScore = computerRoundScore + 1;
+                    return "Player Selection: Rock, Computer Selection: Paper. Paper covers Rock.";
+                } else {
+                    return "Player Selection: Rock, Computer Selection: Rock. It's a tie. Try again.";
+                }
+            } 
+            else if (playerSelection === "Paper") {
+                if (computerSelection === "Rock") {
+                    playerRoundScore = playerRoundScore + 1;
+                    return "Player Selection: Paper, Computer Selection: Rock. Paper covers Rock.";
+                } else if (computerSelection === "Scissors") {
+                    computerRoundScore = computerRoundScore + 1;
+                    return "Player Selection: Paper, Computer Selection: Scissors. Scissors cuts paper.";
+                } else { 
+                    return "Player Selection: Paper, Computer Selection: Paper. It's a tie. Try again.";
+                }
+            }
+            else if (playerSelection === "Scissors") {
+                if (computerSelection === "Paper") {
+                    playerRoundScore = playerRoundScore + 1;
+                    return "Player Selection: Scissors, Computer Selection: Paper. Scissors cuts paper.";
+                } else if (computerSelection === "Rock") {
+                    computerRoundScore = computerRoundScore + 1;
+                    return "Player Selection: Scissors, Computer Selection: Rock. Rock breaks scissors.";
+                } else { 
+                    return "Player Selection: Scissors, Computer Selection: Scissors. It's a tie. Try again.";
+                }
+            }
+            else { 
+                return "Not a valid move.";
+            }
+
+        }
+
+        let playerGameScore = 0;
+        let computerGameScore = 0;        
+
+
+        function game() {
+            console.log(playRound(playerSelection, computerSelection));
+            if (playerRoundScore > computerRoundScore) {
+                playerGameScore = playerGameScore + 1;
+                console.log("You win the round! 4 more to go.");
+            } else if (playerRoundScore < computerRoundScore) {
+                computerGameScore = computerGameScore + 1;
+                console.log("You lose the round! 4 more to go");
+            } else {
+                console.log("Its a tie this round. 4 more to go");
+            }
+            
+            console.log(playRound(playerSelection, computerSelection));
+            if (playerRoundScore > computerRoundScore) {
+                playerGameScore = playerGameScore + 1;
+                console.log("You win the round! 3 more to go.");
+            } else if (playerRoundScore < computerRoundScore) {
+                computerGameScore = computerGameScore + 1;
+                console.log("You lose the round! 3 more to go");
+            } else {
+                console.log("Its a tie this round. 3 more to go");
+            }
+
+            console.log(playRound(playerSelection, computerSelection));
+            if (playerRoundScore > computerRoundScore) {
+                playerGameScore = playerGameScore + 1;
+                console.log("You win the round! 2 more to go.");
+            } else if (playerRoundScore < computerRoundScore) {
+                computerGameScore = computerGameScore + 1;
+                console.log("You lose the round! 2 more to go");
+            } else {
+                console.log("Its a tie this round. 2 more to go");
+            }
+
+            console.log(playRound(playerSelection, computerSelection));
+            if (playerRoundScore > computerRoundScore) {
+                playerGameScore = playerGameScore + 1;
+                console.log("You win the round! 3 more to go.");
+            } else if (playerRoundScore < computerRoundScore) {
+                computerGameScore = computerGameScore + 1;
+                console.log("You lose the round! 1 more to go");
+            } else {
+                console.log("Its a tie this round. 1 more to go");
+            }
+
+            console.log(playRound(playerSelection, computerSelection));
+            if (playerRoundScore > computerRoundScore) {
+                playerGameScore = playerGameScore + 1;
+            } else if (playerRoundScore < computerRoundScore) {
+                computerGameScore = computerGameScore + 1;
+            } else {} 
+            console.log("Your Score:" + playerGameScore);
+            console.log("Computer Score:" + computerGameScore);
+            if (playerGameScore > computerGameScore) {
+                console.log("Congrats you won the game!");
+            } else if (playerGameScore < computerGameScore) {
+                console.log("Oh no! You lost the game.");
+            } else {
+                console.log("Its a tie! How did this happen?");
+            }
+        }
+
+
+        console.log(game());
+
+
+
+
+
+    </script>
+</body>
+</html>

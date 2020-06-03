@@ -1,0 +1,4 @@
+In this project I will be writing a basic game of Rock, Paper, Scissors.  
+The goal is to write using javascript an interactive game using the console in the devtools.  The game will take a user's selection of Rock, Paper, or Scissors.  The slection will be case insensitive.  The computer's choice will be randomly selected.  The game will tell the player whether he has won/lost or tied based on the two slections.  
+I will acheive this by first writing a function called computerPlay that will randomly select the computer's play of Rock, Paper or Scissors.  
+Then I will write a function called playRound with two parameters playerSelection and computerSelection that will return the outcome of the round based on those two parameters. 
