@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Papper Scissors Game</title>
+        <meta charset="UTF-8" />
+    </head>
+<body>
+    <div>
+        <button id="Rock">Rock</button>
+        <button id="Paper">Paper</button>
+        <button id="Scissors">Scissors</button>
+    </div>
+    <div id="container"></div>
+    <script>
+        function computerPlay() {
+            const playerChoice = ["Rock", "Paper", "Scissors"];
+            return playerChoice[Math.floor(Math.random()*playerChoice.length)];
+        }
+        
+        let playerRoundScore = 0;
+        let computerRoundScore = 0;
+        const computerSelection = "";
+
+        const container = document.querySelector("#container");
+        const playerScore = document.createElement("div");
+        playerScore.classList.add("playerScore");
+        playerScore.textContent = "Player Score: " + playerRoundScore;
+        container.appendChild(playerScore);
+
+        const computerScore = document.createElement("div");
+        computerScore.classList.add("playerScore");
+        computerScore.textContent = "Computer Score: " + computerRoundScore;
+        container.appendChild(computerScore); 
+           
+        function playRound(playerSelection, computerSelection) {
+
+            computerSelection = computerPlay();
+            console.log(playerSelection, computerSelection);
+            if (playerSelection === "Rock") {
+                if (computerSelection === "Scissors") {
+                    playerRoundScore = playerRoundScore + 1;
+                    return playerScore.textContent = "Player Score: " + playerRoundScore;
+                } else if (computerSelection === "Paper") {
+                    computerRoundScore = computerRoundScore + 1;
+                    return computerScore.textContent = "Computer Score: " + computerRoundScore;
+                } else {
+                    playerRoundScore = playerRoundScore + 0;
+                    computerRoundScore = computerRoundScore + 0;
+                }
+            } 
+            else if (playerSelection === "Paper") {
+                if (computerSelection === "Rock") {
+                    playerRoundScore = playerRoundScore + 1; 
+                    return playerScore.textContent = "Player Score: " + playerRoundScore;
+                } else if (computerSelection === "Scissors") {
+                    computerRoundScore = computerRoundScore + 1;
+                    return computerScore.textContent = "Computer Score: " + computerRoundScore;
+                } else { 
+                    playerRoundScore = playerRoundScore + 0;
+                    computerRoundScore = computerRoundScore + 0;
+                }
+            }
+            else if (playerSelection === "Scissors") {
+                if (computerSelection === "Paper") {
+                    playerRoundScore = playerRoundScore + 1;
+                    return playerScore.textContent = "Player Score: " + playerRoundScore;
+                } else if (computerSelection === "Rock") {
+                    computerRoundScore = computerRoundScore + 1;
+                    return computerScore.textContent = "Computer Score: " + computerRoundScore;
+                } else { 
+                    playerRoundScore = playerRoundScore + 0;
+                    computerRoundScore = computerRoundScore + 0;
+                }
+            }
+            else { 
+                    playerRoundScore = playerRoundScore + 0;
+                    computerRoundScore = computerRoundScore + 0;
+                }
+            }
+           
+
+
+        function playGame(playerRoundScore, computerRoundScore) {
+            if (playerRoundScore >= 5) {
+                playerScore.textContent = "Player Score: 5 PLAYER WINS!";
+            } else if (computerRoundScore >= 5) {
+                computerScore.textContent = "Computer Score: 5 COMPUTER WINS!";
+            } else {
+                playerScore.textContent = "Player Score: " + playerRoundScore;
+                computerScore.textContent = "Computer Score: " + computerRoundScore; 
+            }
+        }
+        
+
+        const buttons = document.querySelectorAll("button");
+            buttons.forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    const playerSelection = (button.id);
+                    console.log(playRound(playerSelection, computerSelection));
+                    console.log(playGame(playerRoundScore, computerRoundScore));
+                })
+            })
+        
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
